@@ -1,0 +1,3 @@
+[submodule "rcssserver-3D/sim-spark"]
+	path = rcssserver-3D/sim-spark
+	url = https://github.com/EmadBinAbid/robo-cup-soccer-simulator
