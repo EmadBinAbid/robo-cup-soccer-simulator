@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/emadbinabid/Documents/Research/RCSS/rcssserver3D/SimSpark/spark/utility/libb64/cdecode.c
+cdecode.h
+/home/emadbinabid/Documents/Research/RCSS/rcssserver3D/SimSpark/spark/utility/libb64/cdecode.h
+
+/home/emadbinabid/Documents/Research/RCSS/rcssserver3D/SimSpark/spark/utility/libb64/cdecode.h
+
+/home/emadbinabid/Documents/Research/RCSS/rcssserver3D/SimSpark/spark/utility/libb64/cencode.c
+cencode.h
+/home/emadbinabid/Documents/Research/RCSS/rcssserver3D/SimSpark/spark/utility/libb64/cencode.h
+
+/home/emadbinabid/Documents/Research/RCSS/rcssserver3D/SimSpark/spark/utility/libb64/cencode.h
+
