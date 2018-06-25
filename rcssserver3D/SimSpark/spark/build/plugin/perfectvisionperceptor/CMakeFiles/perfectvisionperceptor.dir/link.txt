@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=gnu++11 -W -Wall -Woverloaded-virtual -O3 -DNDEBUG  -shared  -o perfectvisionperceptor.so CMakeFiles/perfectvisionperceptor.dir/export.cpp.o CMakeFiles/perfectvisionperceptor.dir/perfectvisionperceptor.cpp.o CMakeFiles/perfectvisionperceptor.dir/perfectvisionperceptor_c.cpp.o 

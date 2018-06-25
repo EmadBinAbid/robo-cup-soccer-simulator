@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=gnu++11 -W -Wall -Woverloaded-virtual -O3 -DNDEBUG  -shared  -o inputqt.so CMakeFiles/inputqt.dir/inputqt.cpp.o CMakeFiles/inputqt.dir/inputsystemqt.cpp.o CMakeFiles/inputqt.dir/inputsystemqt_c.cpp.o CMakeFiles/inputqt.dir/export.cpp.o -lQtOpenGL -lQtGui -lQtXml -lQtCore 

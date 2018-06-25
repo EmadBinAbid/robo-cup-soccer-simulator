@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=gnu++11 -W -Wall -Woverloaded-virtual -O3 -DNDEBUG  -shared  -o forceeffector.so CMakeFiles/forceeffector.dir/export.cpp.o CMakeFiles/forceeffector.dir/forceeffector.cpp.o CMakeFiles/forceeffector.dir/forceeffector_c.cpp.o 

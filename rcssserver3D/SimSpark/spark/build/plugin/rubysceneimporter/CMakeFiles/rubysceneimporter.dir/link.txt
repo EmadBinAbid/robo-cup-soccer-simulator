@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=gnu++11 -W -Wall -Woverloaded-virtual -O3 -DNDEBUG  -shared  -o rubysceneimporter.so CMakeFiles/rubysceneimporter.dir/export.cpp.o CMakeFiles/rubysceneimporter.dir/rubysceneimporter.cpp.o CMakeFiles/rubysceneimporter.dir/rubysceneimporter_c.cpp.o ../../utility/sfsexp/libsexp.a 

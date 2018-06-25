@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=gnu++11 -W -Wall -Woverloaded-virtual -O3 -DNDEBUG  -rdynamic CMakeFiles/base64.dir/base64.cc.o  -o base64 libb64.a 

@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -std=gnu++11 -W -Wall -Woverloaded-virtual -O3 -DNDEBUG  -shared  -o sexpparser.so CMakeFiles/sexpparser.dir/export.cpp.o CMakeFiles/sexpparser.dir/sexpparser.cpp.o CMakeFiles/sexpparser.dir/sexpparser_c.cpp.o ../../utility/sfsexp/libsexp.a 

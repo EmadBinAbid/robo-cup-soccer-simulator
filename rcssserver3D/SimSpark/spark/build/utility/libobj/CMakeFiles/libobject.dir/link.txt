@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblibobject.a  CMakeFiles/libobject.dir/libobj.c.o
-/usr/bin/ranlib liblibobject.a
