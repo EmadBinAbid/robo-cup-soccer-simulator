@@ -6,4 +6,4 @@ engine for the existing RCSS server 3D.
 Configuration:
 
 1. RCSS server (2D) version 15.3.0.
-2. RCSS monitor version 15.2.0.
+2. RCSS monitor (2D) version 15.2.0.
