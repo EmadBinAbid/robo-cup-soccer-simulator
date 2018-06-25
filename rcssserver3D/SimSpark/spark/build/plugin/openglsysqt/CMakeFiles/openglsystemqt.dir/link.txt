@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -std=gnu++11 -W -Wall -Woverloaded-virtual -O3 -DNDEBUG  -shared  -o openglsystemqt.so CMakeFiles/openglsystemqt.dir/openglsystemqt_c.cpp.o CMakeFiles/openglsystemqt.dir/openglsystemqt.cpp.o CMakeFiles/openglsystemqt.dir/export.cpp.o -lQtOpenGL -lQtGui -lQtXml -lQtCore -lGLU -lGL 
