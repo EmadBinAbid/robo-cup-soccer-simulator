@@ -1,4 +1,4 @@
-RoboCup Soccer Simulator (RCSS)
+# RoboCup Soccer Simulator (RCSS)
 
 This repository is for a research project. The aim is to design and develop a framework and locomotion
 engine for the existing RCSS server 3D. 
@@ -15,5 +15,8 @@ Configuration:
 	- To run SimSpark + rcssserver3d:
 		-- Navigate to "SimSpark/spark/build" and run "sudo make install" on the terminal.
 		-- Now, navigate to SimSpark/rcssserver3d/build and type "sudo make install" on the terminal.
-		-- Run "rcsoccersim" on the terminal window.
+		-- Run "rcsoccersim3d" on the terminal window.
+
+4. RoboViz version 1.4.
+	- To run the RoboViz monitor, navigate to "RoboViz/bin/linux-amd64" and execute "./roboviz.sh" on the terminal.
 

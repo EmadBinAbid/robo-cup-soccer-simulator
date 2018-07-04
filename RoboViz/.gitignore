@@ -1,0 +1,10 @@
+/bin
+*.iml
+.idea/
+.settings/
+screenshots/
+logfiles/
+roboviz.bat
+.clang-format
+*.TMP
+*.java-*
