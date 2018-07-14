@@ -18,7 +18,7 @@ namespace WalkingAgent
         { }
 
         //Overrided constructor -> Sets the global variables
-        public Point(double x, double y, double z)
+        public Point(double x, double y, double z = 0.0)
         {
             this.x = x;
             this.y = y;
@@ -114,11 +114,20 @@ namespace WalkingAgent
         }
 
         //Returns the direction of 'this' point object
-        /*public float getDirection()
-        { }
+        public double getDirection()
+        {
+            return Geometry.ArcTan(this.x, this.y);
+        }
 
         //Returns a new rotated point object after rotating 'this' point object
-        public Point rotate()
-        { }*/
+        public Point rotate(double angle)
+        {
+            double thisMagnitude = this.getMagnitude();
+            //Adding rotation angle
+            double newDirection = this.getDirection() + angle;
+
+            Point point = new Point(thisMagnitude * Geometry.Cos(newDirection), thisMagnitude * Geometry.Cos(newDirection));
+            return point;
+        }
     }
 }
