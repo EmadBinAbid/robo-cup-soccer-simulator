@@ -1,0 +1,12 @@
+E:\Research\RoboCup Simulation 3D\code\RCSS\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.exe.config
+E:\Research\RoboCup Simulation 3D\code\RCSS\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.exe
+E:\Research\RoboCup Simulation 3D\code\RCSS\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.pdb
+E:\Research\RoboCup Simulation 3D\code\RCSS\WalkingAgent\WalkingAgent\obj\Debug\WalkingAgent.csproj.CoreCompileInputs.cache
+E:\Research\RoboCup Simulation 3D\code\RCSS\WalkingAgent\WalkingAgent\obj\Debug\WalkingAgent.exe
+E:\Research\RoboCup Simulation 3D\code\RCSS\WalkingAgent\WalkingAgent\obj\Debug\WalkingAgent.pdb
+E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\obj\Debug\WalkingAgent.csproj.CoreCompileInputs.cache
+E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\obj\Debug\WalkingAgent.exe
+E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\obj\Debug\WalkingAgent.pdb
+E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.exe.config
+E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.exe
+E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.pdb
