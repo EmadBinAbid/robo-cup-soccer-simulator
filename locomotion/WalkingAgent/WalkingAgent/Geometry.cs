@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace WalkingAgent
 {
+    /*
+    @author: Emad Bin Abid
+    @date: July 14, 2018
+    -----------------------------------------------------------------------------------------------------------------------------------
+    Geometry is a class that provides some basic trigonometric ease to manipulate the behavior of agent's locomotion.
+    */
     class Geometry
     {
         private static double pi = 3.141592653589793;

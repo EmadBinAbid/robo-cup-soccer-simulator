@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace WalkingAgent
 {
+    /*
+    @author: Emad Bin Abid
+    @date: July 14, 2018
+    -----------------------------------------------------------------------------------------------------------------------------------
+    Point is a class which provides interface to deal and manipulate with the agent's position in the soccer field.
+    */
     class Point
     {
         //Global variables
