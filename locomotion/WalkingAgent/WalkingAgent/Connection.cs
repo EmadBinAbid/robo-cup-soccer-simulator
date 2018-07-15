@@ -235,11 +235,21 @@ namespace WalkingAgent
 
         //private TRoboCupConnection() : base() { }
 
+        //Overrided constructor -> Calls the overrided constructor of parent class
         public TRoboCupConnection(ConnectionType connectionType, string serverIP = "", int serverPort = -1) : 
             base(connectionType, serverIP, serverPort) { }
 
-        public int sendMessage(string message, int messageLength) { }
+        //Sends a message via the established socket connection. Returns number of bytes of message that is sent
+        public new int sendMessage(string message, int messageLength)
+        {
+            return base.sendMessage(message, messageLength);
+        }
 
-        public int receiveMessage() { }
+        //Receives the message from server or peers. Returns the number of bytes received from the server or peers. Does not return 
+        //the actual message
+        public new int receiveMessage()
+        {
+            return base.receiveMessage();
+        }
     }
 }
