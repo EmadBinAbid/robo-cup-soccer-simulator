@@ -222,4 +222,24 @@ namespace WalkingAgent
             return this.tDataPorter.receiveMessage();
         }
     }
+
+    /*
+    @author: Emad Bin Abid
+    @date: July 15, 2018
+    -----------------------------------------------------------------------------------------------------------------------------------
+    TRoboCupConnection is a class that provides methods to assign server's configuration variables, such as, PORT, IP, etc. on the 
+    client side in RoboCup Soccer Competition.
+    */
+    class TRoboCupConnection : TConnection
+    {
+
+        //private TRoboCupConnection() : base() { }
+
+        public TRoboCupConnection(ConnectionType connectionType, string serverIP = "", int serverPort = -1) : 
+            base(connectionType, serverIP, serverPort) { }
+
+        public int sendMessage(string message, int messageLength) { }
+
+        public int receiveMessage() { }
+    }
 }
