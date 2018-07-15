@@ -37,7 +37,13 @@ namespace WalkingAgent
         //Overrided constructor -> Sets  m_ConnectionType & m_SocketFD
         public TDataPorter(ConnectionType connectionType, Socket socket = null)
         {
-            this.setSocket(connectionType, socket);
+            bool isSocketSet = this.setSocket(connectionType, socket);
+            if(isSocketSet == true)
+                Console.WriteLine("[+]SUCESS: TDataPorter.TDataPorter(ConnectionType, Socket): Successfully initialized TDataPorter.");
+            else
+            {
+                Console.WriteLine("[-]ERROR: TDataPorter.TDataPorter(ConnectionType, Socket): Not able to initialize TDataPorter.");
+            }
         }
 
         //Returns the 'connection mode' -> TCP/UDP
@@ -78,15 +84,16 @@ namespace WalkingAgent
             }
             else
             {
-                Console.WriteLine("[-]ERROR: TDataPorter.sendMessage(): Attempt to send UDP packet via TCP socket.");
+                Console.WriteLine("[-]ERROR: TDataPorter.sendMessage(string, int): Attempt to send UDP packet via TCP socket.");
                 return -1;
             }
             
             if(bytesSent == -1)
             {
-                Console.WriteLine("[-]ERROR: TDataPorter.sendMessage(): Message not sent.");
+                Console.WriteLine("[-]ERROR: TDataPorter.sendMessage(string, int): Not able to send message.");
+                return -1;
             }
-
+            Console.WriteLine("[+]SUCCESS: TDataPorter.sendMessage(string, int): Message sent successfully.");
             return bytesSent;
         }
 
@@ -95,8 +102,14 @@ namespace WalkingAgent
         {
             byte[] serverMessage = new byte[64];
 
-            int bytesReceived = 0;
+            int bytesReceived = -1;
             bytesReceived = this.m_Socket.Receive(serverMessage);
+            if(bytesReceived == -1)
+            {
+                Console.WriteLine("[-]ERROR: TDataPorter.receiveMessage(): Not able to receive message.");
+                return -1;
+            }
+            Console.WriteLine("[+]SUCCESS: TDataPorter.receiveMessage(): Message sent successfully.");
             return bytesReceived;
         }
 
@@ -105,7 +118,10 @@ namespace WalkingAgent
         public bool open()
         {
             if(this.isActive())
-            { return false; }
+            {
+                Console.WriteLine("[!]INFO: TDataPorter.open(): Connection is already opened.");
+                return false;
+            }
 
             ProtocolType protocolType = ProtocolType.Tcp;       //Setting ProtocolType.Tcp by default
             if (this.getConnectionType() == ConnectionType.CONNECTION_TCP)
@@ -116,7 +132,11 @@ namespace WalkingAgent
             this.m_Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, protocolType);
 
             if (this.m_Socket == null)
+            {
+                Console.WriteLine("[-]ERROR: TDataPorter.open(): Not able to open connection.");
                 return false;
+            }
+            Console.WriteLine("[+]SUCCESS: TDataPorter.open(): Connection opened successfully.");
             return true;
         }
         
@@ -124,10 +144,14 @@ namespace WalkingAgent
         public bool close()
         {
             if (!this.isActive())
+            {
+                Console.WriteLine("[!]INFO: TDataPorter.close(): Connection is already closed.");
                 return false;
+            }
 
             this.m_Socket.Close();
             this.m_Socket = null;
+            Console.WriteLine("[+]SUCCESS: TDataPorter.close(): Connection closed successfully.");
             return true;
         }
 
@@ -165,8 +189,17 @@ namespace WalkingAgent
 
             if(serverIP != "" && serverPort != -1)
             {
-                this.open(serverIP, serverPort);
+                bool isOpen = this.open(serverIP, serverPort);
+                if(isOpen == true)
+                {
+                    Console.WriteLine("[+]SUCCESS: TConnection.TConnection(ConnectionType, string, int): Successfully initialized TConnection.");
+                }
+                else
+                {
+                    Console.WriteLine("[-]ERROR: TConnection.TConnection(ConnectionType, string, int): Not able to initialize TConnection.");
+                }
             }
+            Console.WriteLine("[-]ERROR: TConnection.TConnection(ConnectionType, string, int): Invalid serverIP or serverPort.");
         }
 
         //Returns 'true' if the connection with server has been established successfully
@@ -197,7 +230,11 @@ namespace WalkingAgent
             this.tDataPorter.getSocket().Connect(ipEndPoint);
 
             if (ipEndPoint == null)
+            {
+                Console.WriteLine("[-]ERROR: TConnection.open(string, int): Not able to open connection.");
                 return false;
+            }
+            Console.WriteLine("[+]SUCCESS: TConnection.open(string, int): Connection opened successfully.");
             return true;
         }
 
@@ -205,21 +242,48 @@ namespace WalkingAgent
         public bool close()
         {
             if (!this.isConnected())
+            {
+                Console.WriteLine("[!]INFO: TConnection.close(): Connection already closed.");
                 return false;
-            return this.tDataPorter.close();
+            }
+
+            bool isClose = this.tDataPorter.close();
+            if(isClose == true)
+            {
+                Console.WriteLine("[+]SUCCESS: TConnection.close(): Connection closed successfully.");
+                return true;
+            }
+            Console.WriteLine("[-]ERROR: TConnection.close(): Not able to close connection.");
+            return false;
+
+
         }
 
         //Sends a message via the established socket connection. Returns number of bytes of message that is sent
         public int sendMessage(string message, int messageLength)
         {
-            return this.tDataPorter.sendMessage(message, messageLength);
+            int bytesSent = this.tDataPorter.sendMessage(message, messageLength);
+            if(bytesSent == -1)
+            {
+                Console.WriteLine("[-]ERROR: TConnection.sendMessage(string, int): Not able to send message.");
+                return -1;
+            }
+            Console.WriteLine("[+]SUCCESS: TConnection.sendMessage(string, int): Message sent successfully.");
+            return bytesSent;
         }
 
         //Receives the message from server or peers. Returns the number of bytes received from the server or peers. Does not return 
         //the actual message
         public int receiveMessage()
         {
-            return this.tDataPorter.receiveMessage();
+            int bytesReceived = this.tDataPorter.receiveMessage();
+            if (bytesReceived == -1)
+            {
+                Console.WriteLine("[-]ERROR: TConnection.receiveMessage(): Not able to receive message.");
+                return -1;
+            }
+            Console.WriteLine("[+]SUCCESS: TConnection.receiveMessage(): Message received successfully.");
+            return bytesReceived;
         }
     }
 
