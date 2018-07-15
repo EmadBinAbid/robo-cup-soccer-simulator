@@ -20,21 +20,21 @@ namespace WalkingAgent
         private int bufferSize;
         private string hostName;
         private int port;
-        private bool connected;
-        //private TRoboCupConnection tRoboCupConnection;
+        private bool isConnected;
+        private TRoboCupConnection tRoboCupConnection;
 
         //Default constructor
         private ServerCommunicationManager()
         {
-            this.connected = false;
+            this.isConnected = false;
             this.bufferSize = BUFFER_SIZE;
             this.buffer = new char[this.bufferSize];
-            tRoboCupConnection = 0;
-            this.hostName = "testAgent";
-            this.port = 3100;
+            tRoboCupConnection = null;
+            this.hostName = "";
+            this.port = 0;
         }
 
-        //Returns the same server instance every time.
+        //Returns the same server instance every time
         public ServerCommunicationManager getUniqueInstance()
         {
             if(uniqueInstance == null)
@@ -43,6 +43,64 @@ namespace WalkingAgent
             }
             return uniqueInstance;
         }
-        
+
+        //Returns 'true' if agent succesfully connects to server
+        public bool connect(string serverIP, int serverPort)
+        {
+            if(this.isConnected == true)
+            {
+                Console.WriteLine("[!]INFO: ServerCommunicationManager.connect(string, int): Already connected to server.");
+                return true;
+            }
+            this.tRoboCupConnection = new TRoboCupConnection(ConnectionType.CONNECTION_TCP, serverIP, serverPort);
+            if(this.tRoboCupConnection != null)
+            {
+                this.isConnected = true;
+                Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.connect(string, int): Connection with server established.");
+                return true;
+            }
+            Console.WriteLine("[-]ERROR: ServerCommunicationManager.connect(string, int): Cannot connect to server.");
+            return false;
+        }
+
+        //Returns 'true' if agent succesfully disconnects with server
+        public bool disconnect()
+        {
+            bool isDisconnected = this.tRoboCupConnection.close();
+            if(isDisconnected == true)
+            {
+                Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.disconnect(): Connection with server terminated.");
+                this.isConnected = false;
+                return true;
+            }
+            Console.WriteLine("[-]ERROR: ServerCommunicationManager.disconnect(): Not able to terminate server connection.");
+            return false;
+        }
+
+        //Returns the number of bytes sent as the message
+        public int sendMessage(string message, int messageLength)
+        {
+            int bytesSent = this.tRoboCupConnection.sendMessage(message, messageLength);
+            if(bytesSent == -1)
+            {
+                Console.WriteLine("[-]ERROR: ServerCommunicationManager.sendMessage(string, int): Not able to send message.");
+                return -1;
+            }
+            Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.sendMessage(string, int): Message sent successfully.");
+            return bytesSent;
+        }
+
+        //Returns the number of bytes read of the incoming message
+        public int receiveMessage()
+        {
+            int bytesReceived = this.tRoboCupConnection.receiveMessage();
+            if(bytesReceived == -1)
+            {
+                Console.WriteLine("[-]ERROR: ServerCommunicationManager.receiveMessage(): Not able to receive message.");
+                return -1;
+            }
+            Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.receiveMessage(): Message received successfully.");
+            return bytesReceived;
+        }
     }
 }
