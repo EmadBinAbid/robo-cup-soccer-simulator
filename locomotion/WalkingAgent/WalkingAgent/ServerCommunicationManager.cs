@@ -24,7 +24,7 @@ namespace WalkingAgent
         private TRoboCupConnection tRoboCupConnection;
 
         //Default constructor
-        private ServerCommunicationManager()
+        public ServerCommunicationManager()
         {
             this.isConnected = false;
             this.bufferSize = BUFFER_SIZE;

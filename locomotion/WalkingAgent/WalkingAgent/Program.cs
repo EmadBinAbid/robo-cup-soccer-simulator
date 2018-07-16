@@ -19,6 +19,9 @@ namespace WalkingAgent
             int unum = 0;
             Point homePosition;
 
+            serverCommunicationManager = new ServerCommunicationManager();
+            serverCommunicationManager.connect("127.0.0.1", 8080);
+
             Console.Write("Team Name: ");
             teamName = Console.ReadLine();
 

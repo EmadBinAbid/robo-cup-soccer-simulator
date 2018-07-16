@@ -11,17 +11,6 @@ namespace WalkingAgent
     /*
     @author: Emad Bin Abid
     @date: July 14, 2018
-    */
-    enum ConnectionType
-    {
-        CONNECTION_TCP,
-        CONNECTION_UDP,
-        CONNECTION_ILLEGAL
-    }
-
-    /*
-    @author: Emad Bin Abid
-    @date: July 14, 2018
     -----------------------------------------------------------------------------------------------------------------------------------
     TDataPorter is a class that encapsulates socket connection operations, such as, opening, reusing, closing, sending & receiving data
     across sockets.
@@ -199,7 +188,8 @@ namespace WalkingAgent
                     Console.WriteLine("[-]ERROR: TConnection.TConnection(ConnectionType, string, int): Not able to initialize TConnection.");
                 }
             }
-            Console.WriteLine("[-]ERROR: TConnection.TConnection(ConnectionType, string, int): Invalid serverIP or serverPort.");
+            else
+                Console.WriteLine("[-]ERROR: TConnection.TConnection(ConnectionType, string, int): Invalid serverIP or serverPort.");
         }
 
         //Returns 'true' if the connection with server has been established successfully

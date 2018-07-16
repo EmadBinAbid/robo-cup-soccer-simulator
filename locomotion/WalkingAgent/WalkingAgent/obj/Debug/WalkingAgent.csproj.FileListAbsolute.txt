@@ -10,3 +10,4 @@ E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgen
 E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.exe.config
 E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.exe
 E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\bin\Debug\WalkingAgent.pdb
+E:\GitHub Repositories\Research\robo-cup-soccer-simulator\locomotion\WalkingAgent\WalkingAgent\obj\Debug\WalkingAgent.csprojResolveAssemblyReference.cache
