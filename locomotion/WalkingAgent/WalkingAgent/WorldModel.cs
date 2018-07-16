@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace WalkingAgent
 {
+    /*
+    @author: Emad Bin Abid
+    @date: July 16, 2018
+    -------------------------------------------------------------------------------------------------------------------------------------
+    WorldModel is class that provides data structures and accessor methods to deal with a single player/robot.
+    */
     class WorldModel
     {
         private int MAX_HINGE = 21;
@@ -110,18 +116,24 @@ namespace WalkingAgent
             return this.gyro;
         }
 
-        /*public void setLog()
+        public void setLog()
         {
             if(this.logWorldModel.CanWrite)
             {
                 //Log string
                 string logString = "";
                 //Logging the time
-                logString += String.Format("Time:\t {0}\n", this.getTime());
+                logString += String.Format("Time:\t\t\t {0}\n", this.getTime());
                 //Logging the ball
-                logString += String.Format("Ball:\t ({0}, {1}, {2})", this.getBall().getPolarPosition().GetX(), 
+                logString += String.Format("Ball:\t\t\t ({0}, {1}, {2})\n", this.getBall().getPolarPosition().GetX(), 
                     this.getBall().getPolarPosition().GetY(), this.getBall().getPolarPosition().GetZ());
+                logString += String.Format("Direction of Head from Flag:\t {0}\n\n", this.getDOF(DofId.DOF_HEAD_PAN));
+                //Logging the joint
+                logString += "Joints Degree: \n";
+                for(int i = 0; i <= this.MAX_HINGE; i++)
+                    logString += String.Format("{0} {1}\n", this.hingeJointArray[i].getName(), this.hingeJointArray[i].getAxis());
 
+                logString += "\n\n\n";
 
                 byte[] buffer = Encoding.ASCII.GetBytes(logString);
                 this.logWorldModel.Write(buffer, 0, buffer.Length);
@@ -129,7 +141,7 @@ namespace WalkingAgent
 
             this.logWorldModel.Flush();
             this.logWorldModel.Close();
-        }*/
+        }
 
         public PlayMode getPlayMode()
         {
@@ -253,10 +265,19 @@ namespace WalkingAgent
             return this.teamName;
         }
 
-        /*public void resetForUpdate()
+        public void resetForUpdate()
         {
+            Point zero = new Point(0.0, 0.0);
 
-        }*/
+            this.setFRPCenterL(zero);
+            this.setFRPForceL(zero);
+            this.setFRPCenterR(zero);
+            this.setFRPForceR(zero);
+            this.setLastTime();
+            this.setLastPostionOfBall();
+            this.setLastGlobalPositionOfBall();
+            this.setLastVelocityOfBall();
+        }
 
         public void setLastTime()
         {
@@ -298,20 +319,26 @@ namespace WalkingAgent
             return this.globalPositionOfBall;
         }
 
-        /*public void setVelocityOfBall()
+        public void setVelocityOfBall()
         {
-
-        }*/
+            if (this.getDeltaTime() != 0)
+                this.velocityOfBall = (this.getGlobalPositionOfBall() - this.getLastGlobalPositionOfBall()) / this.getDeltaTime();
+            else
+                Console.WriteLine("[!]INFO:\t WorldModel.setVelocityOfBall(): Can not set velocity of ball because WorldModel.getDeltaTime() = 0.");
+        }
 
         public Point getVelocityOfBall()
         {
             return this.velocityOfBall;
         }
 
-        /*public void setAccelerationOfBall()
+        public void setAccelerationOfBall()
         {
-
-        }*/
+            if (this.getDeltaTime() != 0)
+                this.accelerationOfBall = (this.getVelocityOfBall() - this.getLastVelocityOfBall()) / this.getDeltaTime();
+            else
+                Console.WriteLine("[!]INFO:\t WorldModel.setAccelerationOfBall(): Can not set acceleration of ball because WorldModel.getDeltaTime() = 0.");
+        }
 
         public Point getAccelerationOfBall()
         {
@@ -408,10 +435,12 @@ namespace WalkingAgent
             return !this.isGoalUs();
         }
 
-        /*public double getDOF(DofId dofId)
+        public double getDOF(DofId dofId)
         {
-
-        }*/
+            if (dofId == DofId.DOF_SHOULDER_LX || dofId == DofId.DOF_SHOULDER_RX)
+                return Geometry.normalizeAngle(getHingeJoint((int)dofId).getAxis() + 90.0);
+            return getHingeJoint((int)dofId).getAxis();
+        }
 
         public void setMessage(string message)
         {

@@ -81,6 +81,13 @@ namespace WalkingAgent
             return point;
         }
 
+        //Takes two point objects and returns a third point object after subtraction of passed point objects
+        public static Point operator /(Point point1, double number)
+        {
+            Point point = new Point(point1.x / number, point1.y / number, point1.z / number);
+            return point;
+        }
+
         //Takes two point objects and returns true if passed point objects are equal
         public static bool operator ==(Point point1, Point point2)
         {
