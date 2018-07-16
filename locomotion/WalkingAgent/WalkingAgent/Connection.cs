@@ -28,10 +28,10 @@ namespace WalkingAgent
         {
             bool isSocketSet = this.setSocket(connectionType, socket);
             if(isSocketSet == true)
-                Console.WriteLine("[+]SUCESS: TDataPorter.TDataPorter(ConnectionType, Socket): Successfully initialized TDataPorter.");
+                Console.WriteLine("[+]SUCESS:\t TDataPorter.TDataPorter(ConnectionType, Socket): Successfully initialized TDataPorter.");
             else
             {
-                Console.WriteLine("[-]ERROR: TDataPorter.TDataPorter(ConnectionType, Socket): Not able to initialize TDataPorter.");
+                Console.WriteLine("[-]ERROR:\t TDataPorter.TDataPorter(ConnectionType, Socket): Not able to initialize TDataPorter.");
             }
         }
 
@@ -73,16 +73,16 @@ namespace WalkingAgent
             }
             else
             {
-                Console.WriteLine("[-]ERROR: TDataPorter.sendMessage(string, int): Attempt to send UDP packet via TCP socket.");
+                Console.WriteLine("[-]ERROR:\t TDataPorter.sendMessage(string, int): Attempt to send UDP packet via TCP socket.");
                 return -1;
             }
             
             if(bytesSent == -1)
             {
-                Console.WriteLine("[-]ERROR: TDataPorter.sendMessage(string, int): Not able to send message.");
+                Console.WriteLine("[-]ERROR:\t TDataPorter.sendMessage(string, int): Not able to send message.");
                 return -1;
             }
-            Console.WriteLine("[+]SUCCESS: TDataPorter.sendMessage(string, int): Message sent successfully.");
+            Console.WriteLine("[+]SUCCESS:\t TDataPorter.sendMessage(string, int): Message sent successfully.");
             return bytesSent;
         }
 
@@ -95,10 +95,10 @@ namespace WalkingAgent
             bytesReceived = this.m_Socket.Receive(serverMessage);
             if(bytesReceived == -1)
             {
-                Console.WriteLine("[-]ERROR: TDataPorter.receiveMessage(): Not able to receive message.");
+                Console.WriteLine("[-]ERROR:\t TDataPorter.receiveMessage(): Not able to receive message.");
                 return -1;
             }
-            Console.WriteLine("[+]SUCCESS: TDataPorter.receiveMessage(): Message sent successfully.");
+            Console.WriteLine("[+]SUCCESS:\t TDataPorter.receiveMessage(): Message sent successfully.");
             return bytesReceived;
         }
 
@@ -108,7 +108,7 @@ namespace WalkingAgent
         {
             if(this.isActive())
             {
-                Console.WriteLine("[!]INFO: TDataPorter.open(): Connection is already opened.");
+                Console.WriteLine("[!]INFO:\t TDataPorter.open(): Connection is already opened.");
                 return false;
             }
 
@@ -122,10 +122,10 @@ namespace WalkingAgent
 
             if (this.m_Socket == null)
             {
-                Console.WriteLine("[-]ERROR: TDataPorter.open(): Not able to open connection.");
+                Console.WriteLine("[-]ERROR:\t TDataPorter.open(): Not able to open connection.");
                 return false;
             }
-            Console.WriteLine("[+]SUCCESS: TDataPorter.open(): Connection opened successfully.");
+            Console.WriteLine("[+]SUCCESS:\t TDataPorter.open(): Connection opened successfully.");
             return true;
         }
         
@@ -134,13 +134,13 @@ namespace WalkingAgent
         {
             if (!this.isActive())
             {
-                Console.WriteLine("[!]INFO: TDataPorter.close(): Connection is already closed.");
+                Console.WriteLine("[!]INFO:\t TDataPorter.close(): Connection is already closed.");
                 return false;
             }
 
             this.m_Socket.Close();
             this.m_Socket = null;
-            Console.WriteLine("[+]SUCCESS: TDataPorter.close(): Connection closed successfully.");
+            Console.WriteLine("[+]SUCCESS:\t TDataPorter.close(): Connection closed successfully.");
             return true;
         }
 
@@ -181,15 +181,15 @@ namespace WalkingAgent
                 bool isOpen = this.open(serverIP, serverPort);
                 if(isOpen == true)
                 {
-                    Console.WriteLine("[+]SUCCESS: TConnection.TConnection(ConnectionType, string, int): Successfully initialized TConnection.");
+                    Console.WriteLine("[+]SUCCESS:\t TConnection.TConnection(ConnectionType, string, int): Successfully initialized TConnection.");
                 }
                 else
                 {
-                    Console.WriteLine("[-]ERROR: TConnection.TConnection(ConnectionType, string, int): Not able to initialize TConnection.");
+                    Console.WriteLine("[-]ERROR:\t TConnection.TConnection(ConnectionType, string, int): Not able to initialize TConnection.");
                 }
             }
             else
-                Console.WriteLine("[-]ERROR: TConnection.TConnection(ConnectionType, string, int): Invalid serverIP or serverPort.");
+                Console.WriteLine("[-]ERROR:\t TConnection.TConnection(ConnectionType, string, int): Invalid serverIP or serverPort.");
         }
 
         //Returns 'true' if the connection with server has been established successfully
@@ -221,10 +221,10 @@ namespace WalkingAgent
 
             if (ipEndPoint == null)
             {
-                Console.WriteLine("[-]ERROR: TConnection.open(string, int): Not able to open connection.");
+                Console.WriteLine("[-]ERROR:\t TConnection.open(string, int): Not able to open connection.");
                 return false;
             }
-            Console.WriteLine("[+]SUCCESS: TConnection.open(string, int): Connection opened successfully.");
+            Console.WriteLine("[+]SUCCESS:\t TConnection.open(string, int): Connection opened successfully.");
             return true;
         }
 
@@ -233,17 +233,17 @@ namespace WalkingAgent
         {
             if (!this.isConnected())
             {
-                Console.WriteLine("[!]INFO: TConnection.close(): Connection already closed.");
+                Console.WriteLine("[!]INFO:\t TConnection.close(): Connection already closed.");
                 return false;
             }
 
             bool isClose = this.tDataPorter.close();
             if(isClose == true)
             {
-                Console.WriteLine("[+]SUCCESS: TConnection.close(): Connection closed successfully.");
+                Console.WriteLine("[+]SUCCESS:\t TConnection.close(): Connection closed successfully.");
                 return true;
             }
-            Console.WriteLine("[-]ERROR: TConnection.close(): Not able to close connection.");
+            Console.WriteLine("[-]ERROR:\t TConnection.close(): Not able to close connection.");
             return false;
 
 
@@ -255,10 +255,10 @@ namespace WalkingAgent
             int bytesSent = this.tDataPorter.sendMessage(message, messageLength);
             if(bytesSent == -1)
             {
-                Console.WriteLine("[-]ERROR: TConnection.sendMessage(string, int): Not able to send message.");
+                Console.WriteLine("[-]ERROR:\t TConnection.sendMessage(string, int): Not able to send message.");
                 return -1;
             }
-            Console.WriteLine("[+]SUCCESS: TConnection.sendMessage(string, int): Message sent successfully.");
+            Console.WriteLine("[+]SUCCESS:\t TConnection.sendMessage(string, int): Message sent successfully.");
             return bytesSent;
         }
 
@@ -269,10 +269,10 @@ namespace WalkingAgent
             int bytesReceived = this.tDataPorter.receiveMessage();
             if (bytesReceived == -1)
             {
-                Console.WriteLine("[-]ERROR: TConnection.receiveMessage(): Not able to receive message.");
+                Console.WriteLine("[-]ERROR:\t TConnection.receiveMessage(): Not able to receive message.");
                 return -1;
             }
-            Console.WriteLine("[+]SUCCESS: TConnection.receiveMessage(): Message received successfully.");
+            Console.WriteLine("[+]SUCCESS:\t TConnection.receiveMessage(): Message received successfully.");
             return bytesReceived;
         }
     }

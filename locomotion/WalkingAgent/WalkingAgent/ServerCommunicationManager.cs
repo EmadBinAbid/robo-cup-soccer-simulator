@@ -49,17 +49,17 @@ namespace WalkingAgent
         {
             if(this.isConnected == true)
             {
-                Console.WriteLine("[!]INFO: ServerCommunicationManager.connect(string, int): Already connected to server.");
+                Console.WriteLine("[!]INFO:\t ServerCommunicationManager.connect(string, int): Already connected to server.");
                 return true;
             }
             this.tRoboCupConnection = new TRoboCupConnection(ConnectionType.CONNECTION_TCP, serverIP, serverPort);
             if(this.tRoboCupConnection != null)
             {
                 this.isConnected = true;
-                Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.connect(string, int): Connection with server established.");
+                Console.WriteLine("[+]SUCCESS:\t ServerCommunicationManager.connect(string, int): Connection with server established.");
                 return true;
             }
-            Console.WriteLine("[-]ERROR: ServerCommunicationManager.connect(string, int): Cannot connect to server.");
+            Console.WriteLine("[-]ERROR:\t ServerCommunicationManager.connect(string, int): Cannot connect to server.");
             return false;
         }
 
@@ -69,11 +69,11 @@ namespace WalkingAgent
             bool isDisconnected = this.tRoboCupConnection.close();
             if(isDisconnected == true)
             {
-                Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.disconnect(): Connection with server terminated.");
+                Console.WriteLine("[+]SUCCESS:\t ServerCommunicationManager.disconnect(): Connection with server terminated.");
                 this.isConnected = false;
                 return true;
             }
-            Console.WriteLine("[-]ERROR: ServerCommunicationManager.disconnect(): Not able to terminate server connection.");
+            Console.WriteLine("[-]ERROR:\t ServerCommunicationManager.disconnect(): Not able to terminate server connection.");
             return false;
         }
 
@@ -83,10 +83,10 @@ namespace WalkingAgent
             int bytesSent = this.tRoboCupConnection.sendMessage(message, messageLength);
             if(bytesSent == -1)
             {
-                Console.WriteLine("[-]ERROR: ServerCommunicationManager.sendMessage(string, int): Not able to send message.");
+                Console.WriteLine("[-]ERROR:\t ServerCommunicationManager.sendMessage(string, int): Not able to send message.");
                 return -1;
             }
-            Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.sendMessage(string, int): Message sent successfully.");
+            Console.WriteLine("[+]SUCCESS:\t ServerCommunicationManager.sendMessage(string, int): Message sent successfully.");
             return bytesSent;
         }
 
@@ -96,10 +96,10 @@ namespace WalkingAgent
             int bytesReceived = this.tRoboCupConnection.receiveMessage();
             if(bytesReceived == -1)
             {
-                Console.WriteLine("[-]ERROR: ServerCommunicationManager.receiveMessage(): Not able to receive message.");
+                Console.WriteLine("[-]ERROR:\t ServerCommunicationManager.receiveMessage(): Not able to receive message.");
                 return -1;
             }
-            Console.WriteLine("[+]SUCCESS: ServerCommunicationManager.receiveMessage(): Message received successfully.");
+            Console.WriteLine("[+]SUCCESS:\t ServerCommunicationManager.receiveMessage(): Message received successfully.");
             return bytesReceived;
         }
     }
