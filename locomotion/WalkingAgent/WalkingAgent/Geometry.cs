@@ -14,24 +14,24 @@ namespace WalkingAgent
     */
     class Geometry
     {
-        private static double pi = 3.141592653589793;
+        public static double PI = 3.141592653589793;
 
         //Converts the passed angle's unit from degree to radian
         public static double convertDegreeToRadian(double angle)
         {
-            return angle * pi / 180;
+            return angle * PI / 180;
         }
 
         //Converts the passed angle's unit from radian to degree
         public static double convertRadianToDegree(double angle)
         {
-            return angle * 180 / pi;
+            return angle * 180 / PI;
         }
 
         //Returns 'pi'
         public static double getPi()
         {
-            return pi;
+            return PI;
         }
 
         //Returns the normalized 'angle'
