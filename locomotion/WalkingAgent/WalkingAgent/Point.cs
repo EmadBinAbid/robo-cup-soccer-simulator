@@ -81,7 +81,14 @@ namespace WalkingAgent
             return point;
         }
 
-        //Takes two point objects and returns a third point object after subtraction of passed point objects
+        //Takes two point objects and returns a third point object after multiplication of passed point objects
+        public static Point operator *(Point point1, Point point2)
+        {
+            Point point = new Point(point1.x * point2.x, point1.y * point2.y, point1.z * point2.z);
+            return point;
+        }
+
+        //Takes a point object and a number and returns a third point object after division of passed point object with number
         public static Point operator /(Point point1, double number)
         {
             Point point = new Point(point1.x / number, point1.y / number, point1.z / number);
