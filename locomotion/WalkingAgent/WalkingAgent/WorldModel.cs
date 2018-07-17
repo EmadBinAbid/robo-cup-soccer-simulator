@@ -57,7 +57,7 @@ namespace WalkingAgent
         }
 
         //Gives the same instance throughout the game
-        public WorldModel getUniqueInstance()
+        public static WorldModel getUniqueInstance()
         {
             if(uniqueInstance == null)
             {
