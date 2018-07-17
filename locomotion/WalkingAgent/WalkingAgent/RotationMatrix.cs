@@ -16,7 +16,7 @@ namespace WalkingAgent
     class RotationMatrix
     {
         //The vectors represent each line of rotation matrix
-        private Point line0, line1, line2;
+        public Point line0, line1, line2;
 
         //Calculates the rotation matrix for the rotation around X axis
         private RotationMatrix GetRotationMatrixX(double angle)
