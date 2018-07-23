@@ -42,12 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ball.cs" />
+    <Compile Include="Bezier.cs" />
+    <Compile Include="CommandCreater.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="ENUM.cs" />
+    <Compile Include="FastStack.cs" />
+    <Compile Include="GameConfiguration.cs" />
     <Compile Include="Geometry.cs" />
+    <Compile Include="Gyro.cs" />
+    <Compile Include="HingeJoint.cs" />
+    <Compile Include="HomogeneousMatrix.cs" />
+    <Compile Include="InverseKinematics.cs" />
+    <Compile Include="MessageParser.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RotationMatrix.cs" />
+    <Compile Include="RunningZMP.cs" />
     <Compile Include="ServerCommunicationManager.cs" />
+    <Compile Include="WorldModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
