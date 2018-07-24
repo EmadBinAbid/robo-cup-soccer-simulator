@@ -129,7 +129,7 @@ namespace WalkingAgent
     are either used as values for the error field within the continuation
     structures, or as return values for functions with a return type of
     sexp_errcode_t.*/
-    enum SexpErrCode
+    enum SexpErrCodeT
     {
         /*No Error*/
         SEXP_ERR_OK,
@@ -179,6 +179,44 @@ namespace WalkingAgent
 
         /*Unknown parser state*/
         SEXP_ERR_UNKNOWN_STATE
+    }
+
+    /*An element in an s-expression can be one of three types: a <i>value</i> represents an atom with an associated text value.
+    A <i>list</i> represents an s-expression, and the element contains a pointer to the head element of the associated s-expression.*/
+    enum EltT
+    {
+        /*An atom of some type.  See atom type (aty) field of element structure for details as to which atom type this is.*/
+        SEXP_VALUE,
+
+        /*A list. This means the element points to an element representing the head of a list.*/
+        SEXP_LIST,
+
+
+    }
+
+    /*For an element that represents a value, the value can be interpreted as a more specific type.
+    A <i>basic</i> value is a simple string with no whitespace (and therefore no quotes required).
+    A <i>double quote</i> value, or <i>dquote</i>, is one that contains characters (such as whitespace) that requires quotation marks 
+    to contain the string. A <i>single quote</i> value, or <i>squote</i>, represents an element that is prefaced with a single tick-mark.
+    This can be either an atom or s-expression, and the result is that the parser does not attempt to parse the element following the 
+    tick mark. It is simply stored as text. This is similar to the meaning of a tick mark in the Scheme or LISP family of programming 
+    languages. Finally, <i>binary</I> allows raw binary to be stored within an atom. Note that if the binary type is used, the data is 
+    stored in bindata with the length in binlength. Otherwise, the data us stored in the val field with val_used and val_allocated 
+    tracking the size of the value string and the total memory allocated for it.*/
+    enum AtomT
+    {
+        /*Basic, unquoted value*/
+        SEXP_BASIC,
+
+        /*Single quote (tick-mark) value - contains a string representing a non-parsed portion of the s-expression.*/
+        SEXP_SQUOTE,
+
+        /*Double-quoted string.  Similar to a basic value, but potentially containing white-space.*/
+        SEXP_DQUOTE,
+
+        /* Binary data. This is used when the specialized parser is active and supports inlining of binary blobs of data inside an 
+        expression.*/
+        SEXP_BINARY
     }
 
     class ENUM
