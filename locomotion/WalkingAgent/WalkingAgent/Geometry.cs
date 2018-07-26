@@ -75,5 +75,10 @@ namespace WalkingAgent
             }
             return convertRadianToDegree(Math.Atan2(y, x));
         }
+
+        public static Point determineMidPoint(Point point1, Point point2)
+        {
+            return point1 + ((point2 - point1) / 2);
+        }
     }
 }

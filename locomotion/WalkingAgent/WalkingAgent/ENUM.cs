@@ -219,6 +219,22 @@ namespace WalkingAgent
         SEXP_BINARY
     }
 
+    /*Parser mode flag used by continuation to toggle special parser behaviour.*/
+    enum ParserModeT
+    {
+        /*normal (LISP-style) s-expression parser behaviour.*/
+        PARSER_NORMAL,
+
+        /*treat atoms beginning with \#b\# as inlined binary data. Everything else is treated the same as in PARSER_NORMAL mode.*/
+        PARSER_INLINE_BINARY,
+
+        /*If the event_handlers field in the continuation contains a non-null value, the handlers specified in the parser_event_handlers_t
+        struct will be called as appropriate, but the parser will not allocate a structure composed of sexp_t structs. Note that if the 
+        event_handlers is set to null and this mode is selected, the user would be better off not calling anything in the first place, 
+        as they are telling the parser to walk the string, but do nothing productive in the process.*/
+        PARSER_EVENTS_ONLY
+    }
+
     class ENUM
     {
         
