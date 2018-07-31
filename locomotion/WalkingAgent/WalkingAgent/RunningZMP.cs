@@ -858,7 +858,7 @@ namespace WalkingAgent
                 targLeftFPos.SetX(targLeftFPos.GetX()*Geometry.Cos(degRotationTunk) + targLeftFPos.GetZ()*Geometry.Sin(degRotationTunk));
                 targLeftFPos.SetZ(-targLeftFPos.GetX()*Geometry.Sin(degRotationTunk) + targLeftFPos.GetZ()*Geometry.Cos(degRotationTunk));
                 targRightFPos.SetX(targRightFPos.GetX()*Geometry.Cos(degRotationTunk) + targRightFPos.GetZ()*Geometry.Sin(degRotationTunk));
-                targRightFPos.SetZ(-targRightFPos.GetX()*Geometry.Sin(degRotationTunk) + targRightFPos.GetZ()*Geometry.Cos(degRotationTunk);
+                targRightFPos.SetZ(-targRightFPos.GetX()*Geometry.Sin(degRotationTunk) + targRightFPos.GetZ()*Geometry.Cos(degRotationTunk));
 
                 // rotation around Y axis of CoM can be used in Active Balance
                 targLeftFPos.SetY(targLeftFPos.GetY()*Geometry.Cos(degRotationTunkY) - targLeftFPos.GetZ()*Geometry.Sin(degRotationTunkY));
@@ -912,8 +912,8 @@ namespace WalkingAgent
 
                 // Call the inverse kinematics
                 this.computePose(targLeftFPos, targRightFPos,
-                    new Point(degRotationTunk, degRotationTunkY, rotateSupport.x_Ro),
-                    new Point(degRotationTunk, degRotationTunkY, rotateSwing.x_Ro));
+                    new Point(degRotationTunk, degRotationTunkY, rotateSupport.GetX()),
+                    new Point(degRotationTunk, degRotationTunkY, rotateSwing.GetX()));
             }
 
             this.updatePose();

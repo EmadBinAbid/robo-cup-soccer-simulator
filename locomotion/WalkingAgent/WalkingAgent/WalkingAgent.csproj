@@ -61,6 +61,8 @@
     <Compile Include="RotationMatrix.cs" />
     <Compile Include="RunningZMP.cs" />
     <Compile Include="ServerCommunicationManager.cs" />
+    <Compile Include="Sexp.cs" />
+    <Compile Include="SexpMemory.cs" />
     <Compile Include="WorldModel.cs" />
   </ItemGroup>
   <ItemGroup>

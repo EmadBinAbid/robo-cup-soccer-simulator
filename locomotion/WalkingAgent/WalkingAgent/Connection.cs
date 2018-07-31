@@ -87,19 +87,20 @@ namespace WalkingAgent
         }
 
         //Receives the message from server or peers. Returns the number of bytes received from the server or peers
-        public int receiveMessage()
+        public string receiveMessage()
         {
             byte[] serverMessage = new byte[64];
 
             int bytesReceived = -1;
             bytesReceived = this.m_Socket.Receive(serverMessage);
-            if(bytesReceived == -1)
+
+            if (bytesReceived == -1)
             {
                 Console.WriteLine("[-]ERROR:\t TDataPorter.receiveMessage(): Not able to receive message.");
-                return -1;
+                return "";
             }
             Console.WriteLine("[+]SUCCESS:\t TDataPorter.receiveMessage(): Message sent successfully.");
-            return bytesReceived;
+            return Encoding.ASCII.GetString(serverMessage);
         }
 
         //Opens the socket for the first time & initializes the socket properties
@@ -264,16 +265,16 @@ namespace WalkingAgent
 
         //Receives the message from server or peers. Returns the number of bytes received from the server or peers. Does not return 
         //the actual message
-        public int receiveMessage()
+        public string receiveMessage()
         {
-            int bytesReceived = this.tDataPorter.receiveMessage();
-            if (bytesReceived == -1)
+            string serverMessage = this.tDataPorter.receiveMessage();
+            if (serverMessage == "")
             {
                 Console.WriteLine("[-]ERROR:\t TConnection.receiveMessage(): Not able to receive message.");
-                return -1;
+                return "";
             }
             Console.WriteLine("[+]SUCCESS:\t TConnection.receiveMessage(): Message received successfully.");
-            return bytesReceived;
+            return serverMessage;
         }
     }
 
@@ -301,7 +302,7 @@ namespace WalkingAgent
 
         //Receives the message from server or peers. Returns the number of bytes received from the server or peers. Does not return 
         //the actual message
-        public new int receiveMessage()
+        public new string receiveMessage()
         {
             return base.receiveMessage();
         }

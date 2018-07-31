@@ -35,7 +35,7 @@ namespace WalkingAgent
         }
 
         //Returns the same server instance every time
-        public ServerCommunicationManager getUniqueInstance()
+        public static ServerCommunicationManager getUniqueInstance()
         {
             if(uniqueInstance == null)
             {
@@ -91,16 +91,16 @@ namespace WalkingAgent
         }
 
         //Returns the number of bytes read of the incoming message
-        public int receiveMessage()
+        public string receiveMessage()
         {
-            int bytesReceived = this.tRoboCupConnection.receiveMessage();
-            if(bytesReceived == -1)
+            string serverMessage = this.tRoboCupConnection.receiveMessage();
+            if(serverMessage == "")
             {
                 Console.WriteLine("[-]ERROR:\t ServerCommunicationManager.receiveMessage(): Not able to receive message.");
-                return -1;
+                return "";
             }
             Console.WriteLine("[+]SUCCESS:\t ServerCommunicationManager.receiveMessage(): Message received successfully.");
-            return bytesReceived;
+            return serverMessage;
         }
     }
 }
