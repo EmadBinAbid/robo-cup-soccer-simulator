@@ -8,15 +8,15 @@ namespace WalkingAgent
 {
     class SexpT
     {
-        EltT ty;
-        char val;
-        uint valAllocated;
-        uint valUsed;
-        Elt list;
-        Elt next;
-        AtomT aty;
-        char binaryData;
-        uint binaryLength;
+        public EltT ty;
+        public string val;
+        public uint valAllocated;
+        public uint valUsed;
+        public SexpT list;
+        public SexpT next;
+        public AtomT aty;
+        public char binaryData;
+        public uint binaryLength;
     }
 
     //delegate 
