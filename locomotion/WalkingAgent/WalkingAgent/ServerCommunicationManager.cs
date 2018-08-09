@@ -32,6 +32,8 @@ namespace WalkingAgent
             tRoboCupConnection = null;
             this.hostName = "";
             this.port = 0;
+
+            Console.WriteLine("[+]SUCCESS: \tServerCommunicationManager.ServerCommunicationManager(): Successfully initialized ServerCommunicationManager.");
         }
 
         //Returns the same server instance every time
@@ -80,6 +82,7 @@ namespace WalkingAgent
         //Returns the number of bytes sent as the message
         public int sendMessage(string message, int messageLength)
         {
+            Console.WriteLine("Inside");
             int bytesSent = this.tRoboCupConnection.sendMessage(message, messageLength);
             if(bytesSent == -1)
             {

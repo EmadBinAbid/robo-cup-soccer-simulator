@@ -10,7 +10,7 @@ namespace WalkingAgent
     class Program
     {
         static StreamWriter logMessage;
-        static ServerCommunicationManager serverCommunicationManager;
+        static ServerCommunicationManager serverCommunicationManager = null;
 
         static string hostName = "127.0.0.1";
         static int port = 3100;
@@ -67,14 +67,16 @@ namespace WalkingAgent
                 return false;
             }
 
-            Console.WriteLine("Done.");
+            Console.WriteLine("Done.\n");
 
             // Initialize the command's creator
             commandCreater = CommandCreater.getUniqueInstance();
 
             // Initialize the world model
             worldModel = WorldModel.getUniqueInstance();
-            
+
+            GameConfiguration.getUniqueInstance().init();
+
             sendMessage(GameConfiguration.getRSGPath());
             worldModel.setSelfNumber(unum);
             worldModel.setTeamName(teamName);
@@ -84,9 +86,9 @@ namespace WalkingAgent
             string strMessage = "";
             string firstChar = strMessage;
             strMessage = readMessage();
-            MessageParser parser;
-            parser.parseMessage(std::string(strMessage));
-            GameConfiguration.getUniqueInstance().init();
+            MessageParser parser = new MessageParser();
+            parser.parseMessage(strMessage);
+            //GameConfiguration.getUniqueInstance().init();
 
             // Send the first messages to the simulator to spawn the agent in simulator
             commandCreater.init(unum, teamName);
@@ -94,7 +96,7 @@ namespace WalkingAgent
             commandCreater.reset();
             strMessage = firstChar;
             strMessage = readMessage();
-            parser.parseMessage(std::string(strMessage));
+            parser.parseMessage(strMessage);
             commandCreater.beam(-8, 0, 0);
             sendMessage(commandCreater.getPreparedCommand());
 
@@ -201,8 +203,8 @@ namespace WalkingAgent
             logMessage.WriteLine(strMessage);
 
             // Extract the information from the s-expression sense messages
-            MessageParser parser;
-            parser.parseMessage(std::string(strMessage));
+            MessageParser parser = new MessageParser();
+            parser.parseMessage(strMessage);
 
             // Execute the decision making system and walking behavior
             behaveWalking();
@@ -240,7 +242,6 @@ namespace WalkingAgent
             {
                 Console.WriteLine("[-]ERROR: \t:Program.Main(string[]): Unable to initialize Walking Agent.");
             }
-
             run();
 
             Console.WriteLine("[+]SUCCESS: \t:Program.Main(string[]): Walking Agent exited successfully.");

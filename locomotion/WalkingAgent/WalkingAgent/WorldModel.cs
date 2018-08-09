@@ -46,7 +46,7 @@ namespace WalkingAgent
         //Default constructor
         public WorldModel()
         {
-            this.logWorldModel = new FileStream("./logs/worldmodel.log.txt", FileMode.Create, FileAccess.Write);
+            this.logWorldModel = new FileStream("E:/GitHub Repositories/Research/robo-cup-soccer-simulator/locomotion/WalkingAgent/WalkingAgent/logs/worldmodel.log.txt", FileMode.Create, FileAccess.Write);
             this.logWorldModel.Close();
             this.messageReceived = "";
             this.hasFallen = false;
